@@ -1,25 +1,5 @@
 let transactions = [];
 let myChart;
-let db;
-
-const request = indexedDB.open('budget_tracker', 1);
-
-request.onupgradeneeded = function(event) {
-	const db = event.target.result;
-	db.createObjectStore('new_transaction', { autoIncrement: true });
-};
-
-request.onsuccess = function(event) {
-	db = event.target.result;
-
-	if (navigator.onLine) {
-		// saveRecord();
-	}
-};
-
-request.onerror = function(event) {
-	console.log(event.target.errorCode);
-};
 
 // on page load
 fetch("/api/transaction")
@@ -166,52 +146,6 @@ function sendTransaction(isAdding) {
   });
 }
 
-function saveRecord(record) {
-  const transaction = db.transaction([ 'new_transaction'], 'readwrite');
-
-  const transObjectStore = transaction.objectStore('new_transaction');
-
-  transObjectStore.add(record);
-}
-
-function uploadTransaction() {
-  const transaction = db.transaction([ 'new_transaction' ], 'readwrite');
-
-  const transObjectStore = transaction.objectStore('new_transaction');
-
-  const getAll = transObjectStore.getAll();
-
-  getAll.onsuccess = function() {
-    if (getAll.result.length > 0) {
-      // make fetch request here.  can reuse sendTransaction but need to handle add/sub
-      fetch('/api/transaction', {
-        method: 'POST',
-        body    : JSON.stringify(getAll.result),
-				headers : {
-					Accept         : 'application/json, text/plain, */*',
-					'Content-Type' : 'application/json'
-				}
-      })
-      .then((response) => response.json())
-				.then((serverResponse) => {
-					if (serverResponse.message) {
-						throw new Error(serverResponse);
-					}
-					// open one more transaction
-					const transaction = db.transaction([ 'new_transaction' ], 'readwrite');
-					// access the new_trans object store
-					const transObjectStore = transaction.objectStore('new_transaction');
-					// clear all items in your store since it's been successfully added to db
-					transObjectStore.clear();
-
-					alert('All saved transactions have been submitted');
-				})
-				.catch((err) => {
-					console.log(err);
-				});
-    }
-  }
-}
 
 document.querySelector("#add-btn").onclick = function() {
   sendTransaction(true);
@@ -221,4 +155,4 @@ document.querySelector("#sub-btn").onclick = function() {
   sendTransaction(false);
 };
 
-window.addEventListener('online', uploadTransaction);
+
