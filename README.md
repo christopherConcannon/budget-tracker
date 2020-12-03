@@ -3,13 +3,11 @@
 
 ![MIT license badge](https://img.shields.io/badge/license-MIT-green)
 
+## Description
+An installable Progressive Web Application for tracking bank deposits and expenditures.  Project is built using Express.js, Service Workers and the IndexDB API
+
 ![Project Name](./public/images/screenshot.png)
 [Visit site](https://budget-tracker-xo.herokuapp.com/)
-
-
-## Description
-
-An installable Progressive Web Application for tracking bank deposits and expenditures.  Project is built using Express.js, Service Workers and the IndexDB API
 
 ## Table of Contents
   * [Installation](#installation)
