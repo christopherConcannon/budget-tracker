@@ -4,7 +4,7 @@
 ![MIT license badge](https://img.shields.io/badge/license-MIT-green)
 
 ![Project Name](./public/images/screenshot.png)
-[Visit site](https://stormy-cove-01459.herokuapp.com/)
+[Visit site](https://budget-tracker-xo.herokuapp.com/)
 
 
 ## Description
@@ -15,6 +15,7 @@ An installable Progressive Web Application for tracking bank deposits and expend
   * [Installation](#installation)
   * [Usage](#usage)
   * [License](#license)
+  * [Technologies](#technologies)
   * [Contributing](#contributing)
   * [Testing](#testing)
   * [Questions](#questions)
@@ -28,6 +29,8 @@ Run <$ npm start> to launch a local development server on port 3001.  Or visit t
 ## License 
 This project is covered under the MIT license 
 
+## Technologies 
+Node.js, Express, Mongoose
 
 ## Contributing
 To see the guidelines adopted for contributing to this project, please view the [Contributor Covenant](https://www.contributor-covenant.org/version/2/0/code_of_conduct/code_of_conduct.txt)
